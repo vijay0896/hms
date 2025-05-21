@@ -2,11 +2,12 @@ import React, { useContext, useEffect, useState } from "react";
 import { assets } from "../assets/assets.js";
 import { NavLink, useNavigate } from "react-router-dom";
 import { AppContext } from "../context/AppContext.jsx";
-
+import { useLocation } from "react-router-dom";
 const Navbar = () => {
   const navigate = useNavigate();
   const [showMenu, setShowMenu] = useState(false);
   const { token, setToken, userData } = useContext(AppContext);
+  const location = useLocation();
   const logout = () => {
     setToken(false);
     navigate("/login");
@@ -17,13 +18,14 @@ const Navbar = () => {
       navigate("/login");
     }
   }, [token]);
+
   return (
     <div className="flex items-center justify-between text-lg1 py-4 mb-5 border-b border-b-gray-400">
       <img
         onClick={() => navigate("/")}
         src={assets.logo}
         alt="Logo"
-        className="w-44 cursor-pointer"
+        className="w-28 cursor-pointer"
       />
       <ul className="hidden md:flex items-start gap-5 font-medium">
         <NavLink to="/">
@@ -42,7 +44,7 @@ const Navbar = () => {
           <li className="py-1">Contact</li>
           <hr className="border-none outline-none h-0.5 bg-primary w-3/5 m-auto hidden" />
         </NavLink>
-        <NavLink to=" https://hms-admin-theta.vercel.app/" target="_blank">
+        <NavLink to="https://hms-admin-theta.vercel.app/" target="_blank">
           <p className="py-1 px-2 rounded-md text-white border bg-primary ">
             Admin / Doctor Panel
           </p>
@@ -103,12 +105,13 @@ const Navbar = () => {
           } md:hidden right-0 top-0 bottom-0 z-20 overflow-hidden bg-white transition-all`}
         >
           <div className="flex items-center justify-between px-5 py-6">
-            <img className="w-36" src={assets.logo} alt="" />
+            <img className="w-36" src={assets.logo} alt=""  />
             <img
               onClick={() => setShowMenu(false)}
               className="w-7"
               src={assets.cross_icon}
               alt=""
+             
             />
           </div>
           <ul className="flex flex-col items-start gap-2 mt-5 px-2 text-lg font-medium">

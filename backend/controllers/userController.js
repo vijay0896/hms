@@ -46,7 +46,7 @@ const registerUser = async (req, res) => {
     const userData = {
       name,
       email,
-      password
+      password:hashPassword,
     };
 
     const newUser = new userModel(userData);

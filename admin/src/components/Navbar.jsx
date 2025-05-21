@@ -21,7 +21,7 @@ const Navbar = () => {
         <img
           src={assets.admin_logo}
           alt=""
-          className="w-36 sm:w-40 cursor-pointer"
+          className="w-28 sm:w-20 cursor-pointer"
         />
         <p className="border px-2.5 py-0.5 rounded-full border-gray-500 text-gray-600">
           {aToken ? "Admin" : "Doctor"}
